@@ -108,6 +108,12 @@ public class XMLMapperBuilder extends BaseBuilder {
   private void configurationElement(XNode context) {
     try {
       String namespace = context.getStringAttribute("namespace");
+      
+      // namespace如果没有，使用文件的class路径作为namespace
+      if (namespace == null || namespace.equals("")) {
+        String path = context.getPath();
+        namespace = path.replace("/", ".").substring(0, path.length()-4);
+      }
       if (namespace == null || namespace.equals("")) {
         throw new BuilderException("Mapper's namespace cannot be empty");
       }

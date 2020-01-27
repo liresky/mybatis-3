@@ -14,4 +14,5 @@
 /ibderby
 derby.log
 /bin/
+/.vscode
 .mvn/wrapper/maven-wrapper.jar
